@@ -24,9 +24,11 @@ const addTask = function(task, storage = true) {
 
     const deleteButton = item.querySelector('.delete-button');
     deleteButton.addEventListener('click', function() {
-        item.remove();
-        tasks = tasks.filter(t => t !== task);
-        localStorage.setItem('my-tasks', JSON.stringify(tasks));
+        if (confirm('Are you sure you want to delete this task?')) {
+            item.remove();
+            tasks = tasks.filter(t => t !== task);
+            localStorage.setItem('my-tasks', JSON.stringify(tasks));
+        }
     });
 };
 
