@@ -111,11 +111,12 @@ There is **no textbook** to purchase; materials are provided in class.
 | **GitHub** | Version control and collaboration |
 | **Postman** | API testing |
 | **Slack** | Team communication |
+| **One Compiler** | Online compiler for JavaScript, MySQL, and more [onecompiler.com](https://onecompiler.com) |
 
 Additional editors sometimes used in class or for specific tasks:
 
 - **Visual Studio Code** — general-purpose editor for web and backend work  
-- **Spck Editor** — lightweight editing on mobile devices when useful  
+- **Spck Editor** — lightweight editing on mobile devices when useful
 
 ## Supplemental resources
 
@@ -126,3 +127,5 @@ Additional editors sometimes used in class or for specific tasks:
 - [JavaScript in Kurdish](https://www.youtube.com/playlist?list=PLDPXog3mqHRZrpH9USImBHLu2FXUS4RTT) — optional playlist for JavaScript fundamentals
 
 - [Git in Kurdish](https://www.youtube.com/watch?v=FdJL9kyfGIw&list=PLDPXog3mqHRa5F7S6-Z5Cwn00xniFGPP_&index=1) — optional playlist for Git fundamentals
+
+ - [MySQL in Arabic](https://www.youtube.com/watch?v=U_m46d4OG4c&list=PLTwBsl6pEKByPahAPY_vTVEOcl_QEqmdu) — optional playlist for MySQL fundamentals
