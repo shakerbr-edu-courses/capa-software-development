@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
-    connection.query('SELECT id, name FROM students', (err, results) => {
+    connection.query('SELECT * FROM students', (err, results) => {
         if (err) {
             console.error('Error:', err);
             res.status(500).send('Error in DATABASE');
@@ -32,7 +32,7 @@ app.get('/students', (req, res) => {
 app.get('/students/:id', (req, res) => {
     const studentId = req.params.id;
     connection.query(
-        'SELECT id, name FROM students WHERE id = ?',
+        'SELECT * FROM students WHERE id = ?',
         [studentId],
         (err, results) => {
             if (err) {
