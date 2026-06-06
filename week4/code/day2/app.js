@@ -48,6 +48,22 @@ app.get('/students/:id', (req, res) => {
     });
 });
 
+app.post('/students', express.json(), (req, res) => {
+    const { name, gender, course_id } = req.body;
+    connection.query(
+        'INSERT INTO students (name, gender, course_id) VALUES (?, ?, ?)',
+        [name, gender, course_id],
+        (err, results) => {
+            if (err) {
+                console.error('Error:', err);
+                res.status(500).send('Error in DATABASE');
+            } else {
+                res.json({ id: results.insertId, name });
+            }
+        }
+    );
+});
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });

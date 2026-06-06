@@ -7,3 +7,14 @@ GET http://localhost:3000/students
 ###
 
 GET http://localhost:3000/students/2
+
+### Add Students
+
+POST http://localhost:3000/students
+Content-Type: application/json
+
+{
+    "name": "Dilovan Matini",
+    "gender": "m",
+    "course_id": 1
+}
