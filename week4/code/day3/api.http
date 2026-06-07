@@ -1,0 +1,31 @@
+GET http://localhost:3000
+
+### Show All Students
+
+GET http://localhost:3000/students
+
+### Show Student
+
+GET http://localhost:3000/students/2
+
+### Create Student
+
+POST http://localhost:3000/students
+Content-Type: application/json
+
+{
+    "name": "Blind Adam",
+    "gender": "m",
+    "course_id": 1
+}
+
+### Update Student
+
+PUT http://localhost:3000/students/3
+Content-Type: application/json
+
+{
+    "name": "Zaki",
+    "gender": "m",
+    "course_id": 2
+}
