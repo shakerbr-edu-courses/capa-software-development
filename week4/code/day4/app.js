@@ -11,7 +11,7 @@ const pool = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
-});
+}).promise();
 
 app.use(express.json());
 
@@ -19,10 +19,19 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
   const {  name, email, password, birthdate } = req.body;
 
-  res.json({ message: 'Test'});
+  if (!name || !email || !password ) {
+    return res.status(400).json({ error: 'name, email, and password are required' });
+  }
+
+  const [result] = await pool.query(
+    'INSERT INTO users (name, email, password, birthdate) VALUES (?, ?, ?, ?)',
+    [name, email, password, birthdate]
+  );
+
+  res.json({ message: 'You are registered successfully', userId: result.insertId });
 });
 
 app.listen(3003, () => {
