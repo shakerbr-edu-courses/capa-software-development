@@ -101,4 +101,4 @@ Add all your SQL code in a single file named `restaurant.sql` and send it to me 
 
 ## Deadline
 
-The deadline for this assignment is **Monday, June 8, 2026**. Please make sure to submit your work before the deadline.
+The deadline for this assignment is **Monday, June 10, 2026**. Please make sure to submit your work before the deadline.
