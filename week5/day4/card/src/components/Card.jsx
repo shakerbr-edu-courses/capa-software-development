@@ -14,6 +14,11 @@ const departmentStyles = {
     avatar: 'bg-rose-600',
     accent: 'from-rose-500 to-pink-600',
   },
+  Finance: {
+    badge: 'bg-green-50 text-green-700 ring-green-100',
+    avatar: 'bg-green-600',
+    accent: 'from-green-500 to-teal-600',
+  },
 };
 
 const defaultStyles = {
