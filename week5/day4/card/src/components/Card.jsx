@@ -16,7 +16,16 @@ function Card({name, age, department, city = 'N/A'}) {
                 </div>
             </div>
             <hr className="my-3" />
-            <div>{city}</div>
+            <div className="flex flex-col gap-1">
+                <div className="flex justify-between gap-2">
+                    <div>Age</div>
+                    <div>{age}</div>
+                </div>
+                <div className="flex justify-between gap-2">
+                    <div>City</div>
+                    <div>{city}</div>
+                </div>
+            </div>
         </div>
     );
 }
