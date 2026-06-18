@@ -107,9 +107,11 @@ There is **no textbook** to purchase; materials are provided in class.
 
 | Tool | Role |
 |------|------|
-| **Cursor** | Primary IDE (including AI-assisted workflows) |
+| **VS Code** | Primary code editor for web and backend work |
+| **Cursor** | Alternative IDE (including AI-assisted workflows) |
 | **GitHub** | Version control and collaboration |
 | **Postman** | API testing |
+| **REST Client** | API testing in VS Code |
 | **Slack** | Team communication |
 | **One Compiler** | Online compiler for JavaScript, MySQL, and more [onecompiler.com](https://onecompiler.com) |
 
@@ -128,4 +130,10 @@ Additional editors sometimes used in class or for specific tasks:
 
 - [Git in Kurdish](https://www.youtube.com/watch?v=FdJL9kyfGIw&list=PLDPXog3mqHRa5F7S6-Z5Cwn00xniFGPP_&index=1) — optional playlist for Git fundamentals
 
- - [MySQL in Arabic](https://www.youtube.com/watch?v=U_m46d4OG4c&list=PLTwBsl6pEKByPahAPY_vTVEOcl_QEqmdu) — optional playlist for MySQL fundamentals
+- [MySQL in Arabic](https://www.youtube.com/watch?v=U_m46d4OG4c&list=PLTwBsl6pEKByPahAPY_vTVEOcl_QEqmdu) — optional playlist for MySQL fundamentals
+
+- [Node.js & Express in Arabic](https://www.youtube.com/watch?v=IXLhZ9cFS0E&list=PLeWmXrh00479LgmvKAdU8WV2nRXqX4ley) — optional playlist for Node.js fundamentals
+
+- [Git & GitHub in Arabic](https://www.youtube.com/watch?v=aMtKlJsTdPs&list=PLXsBti0EwQ6yLQldACw0V5fIpgsyPg539) — optional playlist for Git fundamentals
+
+- [React JS in Arabic](https://www.youtube.com/watch?v=ihRRf3EjTV8&list=PLYyqC4bNbCIdSZ-JayMLl4WO2Cr995vyS) — optional playlist for React fundamentals
