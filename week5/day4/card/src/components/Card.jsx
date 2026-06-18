@@ -1,6 +1,6 @@
-function Card() {
+function Card({name, age}) {
     return (
-        <div>Hello World</div>
+        <div className="text-red-500">{name} ({age})</div>
     );
 }
 
