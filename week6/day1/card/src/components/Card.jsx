@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 const departmentStyles = {
   Engineering: {
     badge: 'bg-blue-50 text-blue-700 ring-blue-100',
@@ -37,6 +39,7 @@ function getInitials(name) {
 }
 
 function Card({ name, age, department, city }) {
+  const [likes, setLikes] = useState(0);
   const styles = departmentStyles[department] ?? defaultStyles;
   const initials = getInitials(name);
 
@@ -74,6 +77,17 @@ function Card({ name, age, department, city }) {
             <dd className="text-sm font-semibold text-slate-800">{city}</dd>
           </div>
         </dl>
+
+        <div className="mt-5 flex items-center justify-between">
+          <button
+            onClick={() => setLikes(likes + 1)}
+            className="rounded bg-blue-600 px-3 py-2 text-sm font-medium text-white"
+            type="button"
+          >
+            Like
+          </button>
+          <span className="text-sm font-medium text-slate-700">Likes: {likes}</span>
+        </div>
       </div>
     </div>
   );
