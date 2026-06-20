@@ -20,10 +20,22 @@ const starterPeople = [
     department: 'Sales',
     city: 'Baghdad',
   },
+  {
+    name:'Ismail',
+    age:25,
+    department: 'Marketing',
+    city: 'Mosul'
+  }
+
 ];
 
 function App() {
   const cities = ['Duhok', 'Erbil', 'Baghdad', 'Sulaymaniyah', 'Mosul'];
+  const [name, setName] = useState('');
+  const [city, setCity] = useState(0);
+  const [age, setAge] = useState('');
+  const [department, setDepartment] = useState('')
+
   return (
     <div className="flex min-h-screen flex-col gap-6 bg-linear-to-br from-slate-100 via-white to-slate-200 p-6">
       <h1 className="text-center text-2xl font-bold text-slate-900">
@@ -47,6 +59,8 @@ function App() {
           <label className="flex flex-col gap-1 text-sm text-slate-700">
             Name
             <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Enter full name"
               className="rounded border border-slate-300 p-2 focus:outline-none focus:ring-2 focus:ring-slate-400"
               type="text"
@@ -56,6 +70,8 @@ function App() {
           <label className="flex flex-col gap-1 text-sm text-slate-700">
             Age
             <input
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
               placeholder="Enter age"
               className="rounded border border-slate-300 p-2 focus:outline-none focus:ring-2 focus:ring-slate-400"
               type="number"
@@ -65,6 +81,8 @@ function App() {
           <label className="flex flex-col gap-1 text-sm text-slate-700">
             City
             <select
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
               className="rounded border border-slate-300 p-2 focus:outline-none focus:ring-2 focus:ring-slate-400"
             >
               {cities.map((city) => (
@@ -76,9 +94,11 @@ function App() {
           </label>
 
           <label className="flex flex-col gap-1 text-sm text-slate-700">
-            Job
+            Department
             <input
-              placeholder="Enter job title"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              placeholder="Enter department title"
               className="rounded border border-slate-300 p-2 focus:outline-none focus:ring-2 focus:ring-slate-400"
               type="text"
             />
