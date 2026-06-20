@@ -8,33 +8,43 @@ const starterPeople = [
     department: 'Engineering',
     city: 'Duhok',
   },
+];
+
+const starterPeople = [
   {
-    name: 'Ahmed Hassan',
-    age: 22,
-    department: 'Marketing',
+    name: 'Mrove ni',
+    age: 45,
+    department: 'Engineering',
     city: 'Erbil',
   },
-  {
-    name: 'Lina Omar',
-    age: 28,
-    department: 'Sales',
-    city: 'Baghdad',
-  },
-  {
-    name:'Ismail',
-    age:25,
-    department: 'Marketing',
-    city: 'Mosul'
-  }
-
+    {
+      name: 'Sara Ali',
+      age: 25,
+      department: 'Engineering',
+      city: 'Duhok',
+    },
 ];
 
 function App() {
   const cities = ['Duhok', 'Erbil', 'Baghdad', 'Sulaymaniyah', 'Mosul'];
+  const [people, setPeople] = useState(starterPeople);
   const [name, setName] = useState('');
-  const [city, setCity] = useState(0);
+  const [city, setCity] = useState('Duhok');
   const [age, setAge] = useState('');
   const [department, setDepartment] = useState('')
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const mroveNi = {
+      name: name,
+      age: age,
+      department: department,
+      city: city
+    }
+
+    setPeople((mrovetBarehinge) => [mroveNi, ...mrovetBarehinge])
+
+  }
 
   return (
     <div className="flex min-h-screen flex-col gap-6 bg-linear-to-br from-slate-100 via-white to-slate-200 p-6">
@@ -46,6 +56,7 @@ function App() {
         <label className="flex flex-col gap-1 text-sm text-slate-700">
           Search by name
           <input
+            value={name}
             placeholder="Type a name..."
             className="rounded border border-slate-300 bg-slate-50 p-2 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400"
             type="text"
@@ -55,7 +66,7 @@ function App() {
 
       <section className="mx-auto w-full max-w-4xl rounded-xl bg-white p-5 shadow-sm">
         <h2 className="mb-3 text-lg font-semibold text-slate-900">Add a person</h2>
-        <form className="grid gap-3 sm:grid-cols-2">
+        <form onSubmit={handleSubmit} className="grid gap-3 sm:grid-cols-2">
           <label className="flex flex-col gap-1 text-sm text-slate-700">
             Name
             <input
@@ -114,8 +125,8 @@ function App() {
       </section>
 
       <div className="flex flex-wrap justify-center gap-6">
-        {starterPeople.length > 0 ? (
-          starterPeople.map((person) => (
+        {people.length > 0 ? (
+          people.map((person) => (
             <Card
               key={`${person.name}-${person.city}-${person.department}`}
               name={person.name}
