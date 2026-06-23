@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { saveToken } from "../services/auth";
 
 function Login () {
     const [email, setEmail] = useState("");
@@ -21,6 +22,16 @@ function Login () {
                 },
                 body: JSON.stringify({ email, password })
             });
+
+            if (!response.ok) {
+                const data = await response.json();
+                setError(data.error || "Login failed");
+                return;
+            }
+
+            const data = await response.json();
+            saveToken(data.token);
+            window.location.href = "/";
         } catch (e) {
             setError("An error occurred" + e.message);
         }
