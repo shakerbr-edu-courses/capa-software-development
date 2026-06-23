@@ -63,6 +63,6 @@ app.post('/login', async (req, res) => {
   res.json({ message: 'You are logged in successfully', token });
 });
 
-app.listen(3003, () => {
-  console.log('Server is running on port 3003');
+app.listen(3000, () => {
+  console.log('Server is running on port http://localhost:3000');
 });
