@@ -1,21 +1,20 @@
 import { getToken, isLoggedIn } from "../services/auth";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Dashboard () {
-    const yeDaxlKrya = isLoggedIn();
-    const [users, setUsers] = useState([])
-    
+    const _isLoggedIn = isLoggedIn();
+    const [users, setUsers] = useState([]);
 
     useEffect(()=>{
-        if (!yeDaxlKrya) return
+        if (!_isLoggedIn) return
 
         async function fetchUsers(){
-        const jnsya = getToken()
+        const token = getToken()
         const response = await fetch("http://localhost:3000/users", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization" : "Bearer " + jnsya
+                    "Authorization" : "Bearer " + token
                 }
             });
             
@@ -28,8 +27,16 @@ function Dashboard () {
             setUsers(data)
         }
         fetchUsers()
-    },[yeDaxlKrya])
+    },[_isLoggedIn])
 
+    if (!_isLoggedIn) {
+        return (
+            <div className="font-bold text-3xl p-5">
+                <p className="text-red-500">You are not logged in.</p>
+            </div>
+        );
+    }
+    
     return (
         <div className="font-bold text-3xl p-5">
             <table className="border-collapse border w-full max-w-3xl">

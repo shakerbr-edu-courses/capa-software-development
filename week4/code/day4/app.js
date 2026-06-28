@@ -71,13 +71,13 @@ app.post('/login', async (req, res) => {
   res.json({ message: 'You are logged in successfully', token });
 });
 
-app.get('/users', authMiddleware,async (req, res) => {
+app.get('/users', authMiddleware, async (req, res) => {
   const [users] = await pool.query('SELECT name, email, birthdate, created_at from users')
 
   res.json(users);
 })
 
-app.get('/userIds', authMiddleware,async (req, res) => {
+app.get('/userIds', authMiddleware, async (req, res) => {
   const [users] = await pool.query('SELECT id from users')
 
   res.json(users);
