@@ -3,10 +3,18 @@ import mysql from 'mysql2';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import {authMiddleware} from './middlewares/authMiddleware.js';
 
 dotenv.config();
 
 const app = express();
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 const pool = mysql.createPool({
     host: process.env.DB_HOST,
@@ -62,6 +70,18 @@ app.post('/login', async (req, res) => {
 
   res.json({ message: 'You are logged in successfully', token });
 });
+
+app.get('/users', authMiddleware, async (req, res) => {
+  const [users] = await pool.query('SELECT name, email, birthdate, created_at from users')
+
+  res.json(users);
+})
+
+app.get('/userIds', authMiddleware, async (req, res) => {
+  const [users] = await pool.query('SELECT id from users')
+
+  res.json(users);
+})
 
 app.listen(3000, () => {
   console.log('Server is running on port http://localhost:3000');
