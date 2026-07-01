@@ -1,11 +1,17 @@
 import { View, Text } from "react-native";
 
-export default function BookCard() {
+interface BookCardProps {
+    name: string;
+    author: string;
+    price?: string;
+}
+
+export default function BookCard({ name, author, price = 'N/A' }: BookCardProps) {
     return (
         <View>
-            <Text className="text-lg font-bold">Diwan</Text>
-            <Text>Ahamede Xani</Text>
-            <Text>Price: $19.99</Text>
+            <Text className="text-lg font-bold">{name}</Text>
+            <Text>{author}</Text>
+            <Text>Price: {price}</Text>
         </View>
     )
 }
