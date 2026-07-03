@@ -8,6 +8,7 @@ function Navbar () {
                 <li><Link to="/" className="text-gray-300 hover:text-white">Home</Link></li>
                 <li><Link to="/about" className="text-gray-300 hover:text-white">About</Link></li>
                 <li><Link to="/contact" className="text-gray-300 hover:text-white">Contact</Link></li>
+                {isLoggedIn() && <li><Link to="/dashboard" className="text-gray-300 hover:text-white">Dashboard</Link></li>}
                 {isLoggedIn() && <li><Link to="/logout" className="text-gray-300 hover:text-white">Log Out</Link></li>}
                 {!isLoggedIn() && <li><Link to="/login" className="text-gray-300 hover:text-white">Login</Link></li>}
             </ul>

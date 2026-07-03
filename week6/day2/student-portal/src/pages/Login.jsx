@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { saveToken } from "../services/auth";
+import { saveToken, isLoggedIn } from "../services/auth";
 
 function Login () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    if (isLoggedIn()) {
+        window.location.href = "/dashboard";
+    }
 
     async function handleLogin () {
         if (email === "" || password === ""){
@@ -31,7 +35,7 @@ function Login () {
 
             const data = await response.json();
             saveToken(data.token);
-            window.location.href = "/";
+            window.location.href = "/dashboard";
         } catch (e) {
             setError("An error occurred" + e.message);
         }
