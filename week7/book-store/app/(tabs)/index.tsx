@@ -1,7 +1,9 @@
 import { Alert,Button,TextInput,ScrollView, View, Text } from "react-native";
+import {useState} from 'react';
 import BookCard from "../../components/BookCard";
 
 export default function BookScreen () {
+    const [search, setSearch] = useState('')
     return (
         <ScrollView>
             <View className="p-5 bg-red-500">
@@ -10,11 +12,12 @@ export default function BookScreen () {
             </View>
             <TextInput 
             placeholder="Search books"
+            onChangeText={(text) => setSearch(text)}
             className="bg-gray-300 border border-gray-200 p-2 m-2 rounded-lg"
             />
 
             <Button title="Search" 
-            onPress={() => Alert.alert("Search","You pressed on search button")}/>
+            onPress={() => Alert.alert("Search", search)}/>
 
 
             <BookCard name="Diwan" author="Ahamede Xani" />
