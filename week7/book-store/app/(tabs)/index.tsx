@@ -1,4 +1,4 @@
-import { TextInput,ScrollView, View, Text } from "react-native";
+import { Alert,Button,TextInput,ScrollView, View, Text } from "react-native";
 import BookCard from "../../components/BookCard";
 
 export default function BookScreen () {
@@ -12,6 +12,9 @@ export default function BookScreen () {
             placeholder="Search books"
             className="bg-gray-300 border border-gray-200 p-2 m-2 rounded-lg"
             />
+
+            <Button title="Search" 
+            onPress={() => Alert.alert("Search","You pressed on search button")}/>
 
 
             <BookCard name="Diwan" author="Ahamede Xani" />
