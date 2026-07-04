@@ -20,9 +20,9 @@ export default function BookScreen () {
             onPress={() => Alert.alert("Search", search)}/>
 
 
-            <BookCard name="Diwan" author="Ahamede Xani" />
-            <BookCard name="Another Book" author="Another Author" price="$29.99" />
-            <BookCard name="Yet Another Book" author="Yet Another Author" price="$39.99" />
+            <BookCard name="Diwan" author="Ahamede Xani" pictureSource="https://picsum.photos/seed/picsum/200/300" />
+            <BookCard name="Another Book" author="Another Author" price="$29.99" pictureSource="https://picsum.photos/200/300?grayscale"/>
+            <BookCard name="Yet Another Book" author="Yet Another Author" price="$39.99" pictureSource="https://picsum.photos/id/870/200/300?grayscale&blur=2" />
             <BookCard name="One More Book" author="One More Author" price="$49.99" />
             <BookCard name="One More Book" author="One More Author" price="$49.99" />
             <BookCard name="One More Book" author="One More Author" price="$49.99" />
