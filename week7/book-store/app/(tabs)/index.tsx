@@ -1,9 +1,51 @@
-import { Alert,Button,TextInput,ScrollView, View, Text } from "react-native";
-import {useState} from 'react';
+import { Alert,Button,TextInput,ScrollView, View, Text, ActivityIndicator } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useState, useCallback } from 'react';
 import BookCard from "../../components/BookCard";
+import { fetchBooks } from "../../services/bookService";
+
+interface Book {
+    id: number;
+    title: string;
+    authors: string;
+    formats: string;
+}
 
 export default function BookScreen () {
-    const [search, setSearch] = useState('')
+    const [loading, setLoading] = useState(true)
+    const [books, setBooks] = useState<Book[]>([])
+    const [error, setError] = useState<string | null>(null)
+
+    const loadBooks = useCallback(async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const books = await fetchBooks();
+            setBooks(books);
+        } catch (error) {
+            setError("Failed to fetch books.");
+        } finally {
+            setLoading(false);
+        }
+    }, [])
+
+    if (loading) {
+        return (
+            <SafeAreaView className="flex-1 items-center justify-center">
+                <ActivityIndicator size="large" color="#0000ff" />
+            </SafeAreaView>
+        )
+    }
+
+    if (error) {
+        return (
+            <SafeAreaView className="flex-1 items-center justify-center">
+                <Text className="text-red-500">{error}</Text>
+                <Button title="Retry" onPress={loadBooks} />
+            </SafeAreaView>
+        )
+    }
+
     return (
         <ScrollView>
             <View className="p-5 bg-red-500">
