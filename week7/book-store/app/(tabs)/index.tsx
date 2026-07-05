@@ -1,6 +1,6 @@
-import { Alert,Button,TextInput,ScrollView, View, Text, ActivityIndicator } from "react-native";
+import { Alert,Button,TextInput,ScrollView, View, Text, ActivityIndicator, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import BookCard from "../../components/BookCard";
 import { fetchBooks } from "../../services/bookService";
 
@@ -29,6 +29,10 @@ export default function BookScreen () {
         }
     }, [])
 
+    useEffect(() => {
+        loadBooks();
+    }, [loadBooks]);
+
     if (loading) {
         return (
             <SafeAreaView className="flex-1 items-center justify-center">
@@ -47,37 +51,19 @@ export default function BookScreen () {
     }
 
     return (
-        <ScrollView>
-            <View className="p-5 bg-red-500">
-                <Text className="text-lg font-bold">Hello World</Text>
-                <Text>This is CAPA course</Text>
-            </View>
-            <TextInput 
-            placeholder="Search books"
-            onChangeText={(text) => setSearch(text)}
-            className="bg-gray-300 border border-gray-200 p-2 m-2 rounded-lg"
+        <SafeAreaView className="flex-1">
+            <FlatList
+                data={books}
+                keyExtractor={(book) => book.id.toString()}
+                contentContainerClassName="p-5 pb-10"
+                renderItem={({ item }) => (
+                    <BookCard
+                        name={item.title}
+                        author={item.authors}
+                        pictureSource={item.formats}
+                    />
+                )}
             />
-
-            <Button title="Search" 
-            onPress={() => Alert.alert("Search", search)}/>
-
-
-            <BookCard name="Diwan" author="Ahamede Xani" pictureSource="https://picsum.photos/seed/picsum/200/300" />
-            <BookCard name="Another Book" author="Another Author" price="$29.99" pictureSource="https://picsum.photos/200/300?grayscale"/>
-            <BookCard name="Yet Another Book" author="Yet Another Author" price="$39.99" pictureSource="https://picsum.photos/id/870/200/300?grayscale&blur=2" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-            <BookCard name="One More Book" author="One More Author" price="$49.99" />
-
-        </ScrollView>
+        </SafeAreaView>
     )
 }
